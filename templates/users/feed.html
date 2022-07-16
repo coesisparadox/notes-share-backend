@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<a href={% url 'logout-page' %} class="btn btn-primary mx-2" >Logout</a>
+
+<form method="GET">
+  {% csrf_token %}
+Search:<input type="text" name='q'/>
+<button type="submit">Submit</button>
+</form>
+<form method="POST" enctype="multipart/form-data" action="{% url 'feed-page'%}">
+{% csrf_token %}
+Caption<input type="text" name='caption'/>
+<input type="hidden" name="review_status"  value='a'/>
+
+File<input type="file" name='file'/>
+
+<select name="faculty" >
+    <option value="BEI">BEI</option>
+    <option value="BCT">BCT</option>
+    <option value="BCE">BCE</option>
+  </select>
+<select name="sem" >
+    <option value="I/I">I/I</option>
+    <option value="I/II">I/II</option>
+    <option value="II/I">II/I</option>
+    <option value="II/II">II/II</option>
+  </select>
+ Subject: <input type="text" name="sub"/>
+<button type="submit">Submit</button>
+</form> 
+{% for review in posts %}
+<h1>{{review.caption}}</h1>
+<h2>{{review.user}}</h2>
+<h2>{{review.file.url}}</h2>
+{% comment %} <object data=" {% static '/media/Practical-Report-Cover_ArHFlRq.pdf' %}" width="800px" height="800px" >asdsad</object> {% endcomment %}
+ <object data="../..{{review.file.url}}  " width="800px" height="800px" ></object> 
+ <form method="POST" action="{% url 'review-page'%}" >
+    {% csrf_token %}
+<h1>Write a review</h1>
+<input type="text" name="review"/>
+<input type="hidden" name="review_status"  value={{review.id}}/>
+<select name="rate" >
+  <option value=1>1</option>
+  <option value=2>2</option>
+  <option value=3>3</option>
+  <option value=4>4</option>
+  <option value=5>5</option>
+</select>
+<button type="submit">Submit</button>
+</form>   
+{% endfor %}
+{% endblock body %}
+
+

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST" action='{% url 'signup-page' %}'>
+    {% csrf_token %}
+    Email:<input type="text" name="email"/>
+    Password:<input type="password" name="password">
+    <select name="faculty" >
+        <option value="BEI">BEI</option>
+        <option value="BCT">BCT</option>
+        <option value="BCE">BCE</option>
+      </select>
+    <select name="sem" >
+        <option value="I/I">I/I</option>
+        <option value="I/II">I/II</option>
+        <option value="II/I">II/I</option>
+        <option value="II/II">II/II</option>
+      </select>
+      <button type='submit'>Submit</button>
+</form>
+{% endblock body %}
+

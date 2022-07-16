@@ -1,0 +1,7 @@
+accounts/__pycache__/
+migrations/
+noteshare/__pycache__
+users/__pycache__/
+static/
+media/
+.env
