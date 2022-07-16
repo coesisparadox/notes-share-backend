@@ -1,12 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block static %}
+<link rel='stylesheet' href={% static 'media/css/login.css' %}/>
+
+{% endblock static %}
 {% block body %}
 
-<form method="POST" action='{% url 'login-page' %}'>
-    {% csrf_token %}
-    Email:<input type="text" name="email"/>
-    Password:<input type="password" name="password">
-   
-      <button type='submit'>Submit</button>
-</form>
+
+<div class="container">
+  <h2>Login Form</h2>
+  <div class="form_container">
+      <form method="POST" action='{% url 'login-page' %}'>
+        {% csrf_token %}
+
+          <div class="input_name">
+              <i class="fa-solid fa-user user"></i>
+              <input type="text" placeholder="Full Name" id="fname" class="password">
+
+          
+          </div>
+
+          <div class="input_name">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="text" placeholder="Email" name="email" class="password">
+          </div>
+
+          <div class="input_name">
+              <i class="fa-solid fa-lock"></i>
+              <input type="password" placeholder="Password" name="password" class="password">
+          </div>
+          <div class="input_name">
+              <button type="submit" class="button">Login</button>
+          </div>
+
+      </form>
+  </div>
+</div>
 {% endblock body %}
 

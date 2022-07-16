@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block  body %}
+
+<div class="home">
+    <h2 id="head">Learn And Share Knowledge </h2>
+
+  <form class="search_form">
+    <div class="search_body">
+    <div class="searchbar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" placeholder="Search.." class="search">
+    </div>
+    <div class="dropdown">
+        <select class="drop" placeholder="Faculty"> 
+            <option  class="input_search">Faculty</option>
+            <option value="search"class="input_search">BEI</option>
+            <option value="search"class="input_search">BCT</option>
+            <option value="search"class="input_search">BCE</option>
+            <option value="search"class="input_search">CSIT</option>
+        </select>
+    </div>
+</div>
+    <div class="search_btn">
+      Search
+    </div>
+  </form>
+</div>
+{% endblock body %}
+
+

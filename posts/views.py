@@ -56,4 +56,9 @@ def review_view(request):
         # return render(request,'users/feed.html')
         else:
            return HttpResponse("Invalid")
-    
+
+def home_view(request):
+    return render(request,'users/index.html')
+
+def about_view(request):
+    return render(request,'users/about.html')

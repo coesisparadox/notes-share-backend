@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static %}
+
+<link rel='stylesheet' href={% static 'media/css/about.css' %}/>
+
+{% endblock static %}
+
+{% block body %}
+<div class="about-section">
+
+    <h1>About Us Page</h1>
+    <p>Main purpose of this page is to share the note</p>
+    <div>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique incidunt laudantium ipsam velit, ipsa
+        tempore aspernatur voluptas excepturi nulla reiciendis, deleniti voluptates aliquam alias facere
+        exercitationem doloremque itaque aliquid unde!
+
+        <p class="footer">@copyright2022 all right reserved</p>
+    </div>
+</div>
+
+{% endblock body %}

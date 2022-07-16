@@ -1,22 +1,81 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block static %}
+<link rel='stylesheet' href={% static 'media/css/login.css' %}/>
+
+{% endblock static %}
 {% block body %}
 
-<form method="POST" action='{% url 'signup-page' %}'>
-    {% csrf_token %}
-    Email:<input type="text" name="email"/>
-    Password:<input type="password" name="password">
-    <select name="faculty" >
-        <option value="BEI">BEI</option>
-        <option value="BCT">BCT</option>
-        <option value="BCE">BCE</option>
-      </select>
-    <select name="sem" >
-        <option value="I/I">I/I</option>
-        <option value="I/II">I/II</option>
-        <option value="II/I">II/I</option>
-        <option value="II/II">II/II</option>
-      </select>
-      <button type='submit'>Submit</button>
-</form>
+   
+
+
+<div class="container">
+  <h2>Registration Form</h2>
+  <div class="form_container">
+      <form  method="POST" action='{% url 'signup-page' %}'>
+        {% csrf_token %}
+
+          <div class="input_name">
+              <i class="fa-solid fa-user user"></i>
+                  <input type="text" placeholder="Full Name" id="fname" class="password">
+
+                  <!-- <span>
+                      <i class="fa-solid fa-user"></i>
+                      <input type="text" placeholder="Last Name" class="name">
+                  </span> -->
+          </div>
+
+          <div class="input_name">
+              <i class="fa-solid fa-envelope"></i>
+              <input type="text" placeholder="Email" name="email" class="password">
+          </div>
+
+          <div class="input_name">
+              <i class="fa-solid fa-lock"></i>
+              <input type="text" placeholder="Password" name="password" class="password">
+          </div>
+
+          <div class="input_name">
+              <i class="fa-solid fa-lock"></i>
+              <input type="text" placeholder="Confirm Password" class="password">
+          </div>
+
+          <div class="input_name">
+              <select class="faculty" name="faculty">
+                  <option value="input_name">Select Faculty</option>
+                  <option value="input_name">BEI</option>
+                  <option value="input_name">BCT</option>
+                  <option value="input_name">BCE</option>
+                  <option value="input_name">CSIT</option>
+              </select>
+          </div>
+
+          <div class="input_name">
+              <select class="semester" name="sem">
+                  <option value="input_name">Select Year/Semester</option>
+                  <option value="I/I">I/I</option>
+                  <option value="I/II">I/II</option>
+                  <option value="II/I">II/I</option>
+                  <option value="II/II">II/II</option>
+                  <option value="III/">III/I</option>
+                  <option value="III/II">III/II</option>
+                  <option value="IV/I">IV/I</option>
+                  <option value="IV/II">IV/II</option>
+              </select>
+          </div>
+
+
+          <!-- <div class="input_name">
+              <input type="checkbox" class="check_button">
+              <label>I accept the terms and condition</label>
+          </div> -->
+
+          <div class="input_name">
+              <button type="submit" class="button" >Register</button>
+          </div>
+
+      </form>
+  </div>
+ </div>
 {% endblock body %}
 

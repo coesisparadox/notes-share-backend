@@ -23,19 +23,18 @@ def login_view(request):
         email=request.POST.get('email')
         password=request.POST.get('password')
         print(email,password)
-        try:
-            user=User.objects.get(email=email,password=password)
-            print(user)
-            if user is not None:
-                login(request,user)
-                messages.success(request,"Successfully logged in")
-
-            # return redirect('feed_page')
-            return HttpResponse("Success")
-        except:
         
-            messages.error(request,"Invalid")
+        user=User.objects.get(email=email,password=password)
+        print(user)
+        if user is not None:
+            login(request,user)
+            messages.success(request,"Successfully logged in")
+
+            return redirect('feed-page')
+        else:
             return HttpResponse("Invalid")
+
+        
 
             # return redirect('feed_page')
     return render(request,'accounts/login.html')
