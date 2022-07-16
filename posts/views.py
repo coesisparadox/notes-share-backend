@@ -58,6 +58,14 @@ def review_view(request):
            return HttpResponse("Invalid")
 
 def home_view(request):
+    if('q' in request.GET):
+        query=request.GET.get('q')
+        allPosts=Posts.objects.filter(caption__icontains=query)
+        print(allPosts)    
+        data={'posts':allPosts}
+        print(data)
+    
+        return redirect('feed-page',data)
     return render(request,'users/index.html')
 
 def about_view(request):

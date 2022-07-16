@@ -17,15 +17,15 @@
             <li><a href="#"><i class="fa-solid fa-graduation-cap"></i>Faculty</a>
                 <div class="subnavbaar">
                     <ul>
-                        <li><a href="#">BEI</a></li>
-                        <li><a href="#">BCT</a></li>
-                        <li><a href="#">BCE</a></li>
-                        <li><a href="#">CSIT</a></li>
+                        <li><a href="{% url 'feed-page' %}">BEI</a></li>
+                        <li><a href="{% url 'feed-page' %}">BCT</a></li>
+                        <li><a href="{% url 'feed-page' %}">BCE</a></li>
+                        <li><a href="{% url 'feed-page' %}">CSIT</a></li>
                     </ul>
                 </div>
             </li>
             
-            <li><a href="/posts/about"><i class="fa-solid fa-user"></i>About US</a></li>
+            <li><a href="/posts/about"><i class="fa-solid fa-user"></i>About Us</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout-page' %}"><i class="fa-solid fa-user"></i>Logout</a></li>
             

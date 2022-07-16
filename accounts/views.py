@@ -14,6 +14,13 @@ def signup_view(request):
         print(email,password,sem,faculty)
         user=User.objects.create(email=email,faculty=faculty,sem=sem,password=password)
         user=user.save()
+        
+        if user is not None:
+            login(request,user)
+            messages.success(request,"Successfully logged in")
+
+        return redirect('home-page')
+        
     # print(user)
     return render(request,'accounts/signup.html')
 
@@ -30,7 +37,7 @@ def login_view(request):
             login(request,user)
             messages.success(request,"Successfully logged in")
 
-            return redirect('feed-page')
+            return redirect('home-page')
         else:
             return HttpResponse("Invalid")
 

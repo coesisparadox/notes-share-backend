@@ -1,16 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block body %}
-<a href={% url 'logout-page' %} class="btn btn-primary mx-2" >Logout</a>
+{% block static %}
+<link rel='stylesheet' href={% static 'media/css/feed.css' %}/>
 
+{% endblock static %}
+{% block body %}
+<div class='feed'>
 <form method="GET">
   {% csrf_token %}
-Search:<input type="text" name='q'/>
+  <div class='search'>
+    <div class="searchbar">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Search.." class="search" name='q'>
+  </div>
 <button type="submit">Submit</button>
+  </div>
 </form>
-<form method="POST" enctype="multipart/form-data" action="{% url 'feed-page'%}">
+{% if user.is_authenticated %}
+<form method="POST"  enctype="multipart/form-data" action="{% url 'feed-page'%}">
 {% csrf_token %}
-Caption<input type="text" name='caption'/>
+<div class="caption">
+  <div class="caption_body">
+<input type="text" placeholder="Chapter name" name='caption'/>
 <input type="hidden" name="review_status"  value='a'/>
 
 File<input type="file" name='file'/>
@@ -26,18 +37,25 @@ File<input type="file" name='file'/>
     <option value="II/I">II/I</option>
     <option value="II/II">II/II</option>
   </select>
- Subject: <input type="text" name="sub"/>
+  <input type="text" placeholder="Subject" name="sub"/>
+  </div>
 <button type="submit">Submit</button>
+</div>
+
 </form> 
+{% endif %}
 {% for review in posts %}
-<h1>{{review.caption}}</h1>
-<h2>{{review.user}}</h2>
-<h2>{{review.file.url}}</h2>
+<div class="caption_body">
+<h2>Chapter Name-{{review.caption}}</h2>
+<h3>User -{{review.user}}</h3>
+<h3>Subject -{{review.sub}}</h3>
+</div>
 {% comment %} <object data=" {% static '/media/Practical-Report-Cover_ArHFlRq.pdf' %}" width="800px" height="800px" >asdsad</object> {% endcomment %}
- <object data="../..{{review.file.url}}  " width="800px" height="800px" ></object> 
+ <object data="../..{{review.file.url}}  " width="800px" height="800px" class="pdf" ></object> 
  <form method="POST" action="{% url 'review-page'%}" >
     {% csrf_token %}
-<h1>Write a review</h1>
+{% if user.is_authenticated %}
+<h4>Write a review</h4>
 <input type="text" name="review"/>
 <input type="hidden" name="review_status"  value={{review.id}}/>
 <select name="rate" >
@@ -48,8 +66,11 @@ File<input type="file" name='file'/>
   <option value=5>5</option>
 </select>
 <button type="submit">Submit</button>
-</form>   
+</form>
+{% endif %}
 {% endfor %}
+</div>   
+
 {% endblock body %}
 
 

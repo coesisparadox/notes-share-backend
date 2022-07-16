@@ -4,11 +4,12 @@
 <div class="home">
     <h2 id="head">Learn And Share Knowledge </h2>
 
-  <form class="search_form">
+  <form class="search_form" method="GET" action={% url 'feed-page' %}>
+    {% csrf_token %}
     <div class="search_body">
     <div class="searchbar">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" placeholder="Search.." class="search">
+        <input type="text" placeholder="Search.." class="search" name='q'>
     </div>
     <div class="dropdown">
         <select class="drop" placeholder="Faculty"> 
@@ -20,9 +21,9 @@
         </select>
     </div>
 </div>
-    <div class="search_btn">
+    <button type='submit' class="search_btn">
       Search
-    </div>
+    </button>
   </form>
 </div>
 {% endblock body %}
