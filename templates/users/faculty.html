@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static %}
+<link rel='stylesheet' href={% static 'media/css/faculty.css' %}/>
+
+{% endblock static %}
+{% block body %}
+<h1>Choose your semester</h1>
+<div class="sem">
+    <a href={% url 'subject-page' %}><h1>I/I</h1></a>
+    <a href={% url 'subject-page' %}><h1>I/II</h1></a>
+
+    <a href={% url 'subject-page' %}><h1>II/I</h1></a>
+    <a href={% url 'subject-page' %}><h1>II/II</h1></a>
+
+    <a href={% url 'subject-page' %}><h1>III/I</h1></a>
+    <a href={% url 'subject-page' %}><h1>III/II</h1></a>
+
+    <a href={% url 'subject-page' %}><h1>IV/I</h1></a>
+    <a href={% url 'subject-page' %}><h1>IV/II</h1></a>
+
+
+</div>
+
+{% endblock body %}

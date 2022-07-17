@@ -44,20 +44,81 @@ File<input type="file" name='file'/>
 
 </form> 
 {% endif %}
-{% for review in posts %}
+{% for post in posts %}
 <div class="caption_body">
-<h2>Chapter Name-{{review.caption}}</h2>
-<h3>User -{{review.user}}</h3>
-<h3>Subject -{{review.sub}}</h3>
+<h2>Chapter Name-{{post.caption}}</h2>
+<h3>Published by-{{post.user}}</h3>
+<h3>Subject-{{post.sub}}</h3>
+<h3>Semester-{{post.sem}}</h3>
+<h3>Faculty-{{post.faculty}}</h3>
 </div>
+<div class="object">
 {% comment %} <object data=" {% static '/media/Practical-Report-Cover_ArHFlRq.pdf' %}" width="800px" height="800px" >asdsad</object> {% endcomment %}
- <object data="../..{{review.file.url}}  " width="800px" height="800px" class="pdf" ></object> 
+ <object data="../..{{post.file.url}}  " width="800px" height="800px" class="pdf" ></object> 
+ <h2>Reviews</h2>
+ {% for review in reviews  %}
+ {% if review.post.id == post.id %}
+ <div class='review'>
+  
+   <h3>{{review.comment}}</h3>
+   <div class='stars'>
+   {% if review.rate == 1 %}
+   <div class='star'>
+ <i class="fas fa-star"></i> 
+   </div>
+ {% endif %}
+ 
+   {% if review.rate == 2 %}
+   <div class='star'>
+
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+</div>
+
+ {% endif %}
+   {% if review.rate == 3 %}
+   <div class='star'>
+
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+</div>
+
+ {% endif %}
+   {% if review.rate == 4 %}
+   <div class='star'>
+
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+</div>
+
+ {% endif %}
+   {% if review.rate == 5 %}
+   <div class='star'>
+
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+ <i class="fas fa-star"></i> 
+</div>
+
+{% endif %}
+</div>
+  <h3>{{review.user}}</h3>
+</div>
+
+  {% endif %}
+  {% endfor %}
  <form method="POST" action="{% url 'review-page'%}" >
     {% csrf_token %}
 {% if user.is_authenticated %}
-<h4>Write a review</h4>
+<div class="review_body">
+<h3>Write a Review</h3>
 <input type="text" name="review"/>
-<input type="hidden" name="review_status"  value={{review.id}}/>
+<input type="hidden" name="review_status"  value={{post.id}}/>
 <select name="rate" >
   <option value=1>1</option>
   <option value=2>2</option>
@@ -66,8 +127,11 @@ File<input type="file" name='file'/>
   <option value=5>5</option>
 </select>
 <button type="submit">Submit</button>
+</div>
 </form>
 {% endif %}
+</div>
+
 {% endfor %}
 </div>   
 

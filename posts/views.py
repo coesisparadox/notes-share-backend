@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from .models import Posts, Review
 from django.contrib import messages
 from django.views.decorators.clickjacking import xframe_options_sameorigin
+from django.db.models import Q
 
 # Create your views here.
 @xframe_options_sameorigin
@@ -21,13 +22,14 @@ def feed_view(request):
             messages.success(request,"Successfully Posted")
     if('q' in request.GET):
         query=request.GET.get('q')
-        allPosts=Posts.objects.filter(caption__icontains=query)
+        allPosts=Posts.objects.filter(Q(caption__icontains=query) | Q(sub__iexact=query)| Q(faculty__iexact=query))
         print(allPosts)
     else: 
         allPosts=Posts.objects.all()      
+    allReviews=Review.objects.all()
   
     
-    data={'posts':allPosts}
+    data={'posts':allPosts,'reviews':allReviews}
     print(data)
     
     return render(request,'users/feed.html',data)
@@ -40,7 +42,6 @@ def review_view(request):
         print('status2',request.POST.get('review_status'))
 
         if(request.POST.get('review_status')!='a'):
-            print('asdasdadas')
             prod_id=request.POST.get('review_status')
             prod=prod_id.split("/")
             print('prod',prod[0])
@@ -56,6 +57,8 @@ def review_view(request):
         # return render(request,'users/feed.html')
         else:
            return HttpResponse("Invalid")
+    
+
 
 def home_view(request):
     if('q' in request.GET):
@@ -70,3 +73,13 @@ def home_view(request):
 
 def about_view(request):
     return render(request,'users/about.html')
+
+def faculty_view(request):
+    return render(request,'users/faculty.html')
+
+def subject_view(request):
+    allPosts=Posts.objects.all()
+    data={'posts':allPosts}
+
+
+    return render(request,'users/subject.html',data)

@@ -8,7 +8,7 @@
     <link rel='stylesheet' href={% static 'media/css/style.css' %}/>
     {% block static %}{% endblock static %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Note Share Web App</title>
+    <title>Note Assemble- Web App</title>
 </head>
 <body>
     <div class="navbar">
@@ -17,10 +17,10 @@
             <li><a href="#"><i class="fa-solid fa-graduation-cap"></i>Faculty</a>
                 <div class="subnavbaar">
                     <ul>
-                        <li><a href="{% url 'feed-page' %}">BEI</a></li>
-                        <li><a href="{% url 'feed-page' %}">BCT</a></li>
-                        <li><a href="{% url 'feed-page' %}">BCE</a></li>
-                        <li><a href="{% url 'feed-page' %}">CSIT</a></li>
+                        <li><a href="{% url 'faculty-page' %}">BEI</a></li>
+                        <li><a href="{% url 'faculty-page' %}">BCT</a></li>
+                        <li><a href="{% url 'faculty-page' %}">BCE</a></li>
+                        <li><a href="{% url 'faculty-page' %}">CSIT</a></li>
                     </ul>
                 </div>
             </li>

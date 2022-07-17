@@ -6,4 +6,7 @@ urlpatterns = [
     path('review/',review_view ,name="review-page" ),
     path('',home_view ,name="home-page" ),
     path('about/',about_view ,name="about-page" ),
+    path('faculty/', faculty_view, name="faculty-page"),
+    path('subject/', subject_view, name="subject-page"),
+
 ]
