@@ -26,21 +26,24 @@ def signup_view(request):
 
 
 def login_view(request):
-    if(request.method=="POST"):
-        email=request.POST.get('email')
-        password=request.POST.get('password')
-        print(email,password)
+    try:
+        if(request.method=="POST"):
+            email=request.POST.get('email')
+            password=request.POST.get('password')
+            print(email,password)
+            
+            user=User.objects.get(email=email,password=password)
+            print(user)
+            if user is not None:
+                login(request,user)
+                messages.success(request,"Successfully logged in")
+
+                return redirect('home-page')
+            else:
+                return HttpResponse("Invalid")
+    except:
+                return HttpResponse("Invalid User")
         
-        user=User.objects.get(email=email,password=password)
-        print(user)
-        if user is not None:
-            login(request,user)
-            messages.success(request,"Successfully logged in")
-
-            return redirect('home-page')
-        else:
-            return HttpResponse("Invalid")
-
         
 
             # return redirect('feed_page')

@@ -5,17 +5,31 @@
 <link rel='stylesheet' href={% static 'media/css/faculty.css' %}/>
 
 {% endblock static %}
+
 {% block body %}
 <h1>Choose your Subject</h1>
 <div class="sem">
-    {% comment %} <a href={% url 'feed-page' %}><h1>I/I</h1></a> {% endcomment %}
-    {% for post in posts  %}
+    {% for post in posts %}
+    {% if pk == post.sem %}
     
-    <a href={% url 'feed-page' %}><h1>{{post.sub }}</h1></a>
-    
+  <h1 onclick='send("{{post.sub}}")'>{{post.sub }}</h1>
+  {% endif %}
     {% endfor %}
 
 
 </div>
 
 {% endblock body %}
+{% block script %}
+console.log(window.location.href);
+function send( param){
+    console.log((param));
+
+    let locate=window.location.href.split('subject')[0]
+ navigate=locate+'feed/?q='+param
+
+window.location.assign(navigate)
+
+
+}
+{% endblock script %}

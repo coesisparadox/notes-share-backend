@@ -2,6 +2,7 @@ from operator import mod
 from this import d
 from django.db import models
 from accounts.models import User
+from django.utils import timezone
 # Create your models here.
 class Posts(models.Model):
     FACULTY_CHOICES=[("BEI",'BEI'),("BCT",'BCT'),("BCE","BCE")]
@@ -12,6 +13,10 @@ class Posts(models.Model):
     faculty=models.CharField(choices=FACULTY_CHOICES,max_length=10)
     sem=models.CharField(choices=SEM_CHOICES,max_length=10)  
     sub=models.TextField(null=True,blank=True,max_length=20)
+    created_at=models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        ordering=['-created_at']
  
 
     def __str__(self):

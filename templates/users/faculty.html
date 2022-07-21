@@ -8,19 +8,32 @@
 {% block body %}
 <h1>Choose your semester</h1>
 <div class="sem">
-    <a href={% url 'subject-page' %}><h1>I/I</h1></a>
-    <a href={% url 'subject-page' %}><h1>I/II</h1></a>
-
-    <a href={% url 'subject-page' %}><h1>II/I</h1></a>
-    <a href={% url 'subject-page' %}><h1>II/II</h1></a>
-
-    <a href={% url 'subject-page' %}><h1>III/I</h1></a>
-    <a href={% url 'subject-page' %}><h1>III/II</h1></a>
-
-    <a href={% url 'subject-page' %}><h1>IV/I</h1></a>
-    <a href={% url 'subject-page' %}><h1>IV/II</h1></a>
-
+    {% for post in posts %}
+    {% if pk == post.faculty %}
+    
+    <a href={% url 'subject-page' post.sem %}> <h1  >{{post.sem }}</h1></a> 
+  {% endif %}
+    {% endfor %}
+ 
 
 </div>
 
 {% endblock body %}
+{% block script %}
+let value=document.getElementsByClassName('value')
+let inValue=document.getElementsByClassName('inValue')
+let arr=[]
+for (let key in value){
+  let inHTML=value[key].innerText
+  arr.push(inHTML)
+}
+
+
+let uniqueChars = [...new Set(arr)];
+for (let i=0;i<uniqueChars.length-1;i++){
+ value[i].innerText+=uniqueChars[i]
+}
+console.log(uniqueChars);
+{% comment %}  {% endcomment %}
+{% endblock script %}
+

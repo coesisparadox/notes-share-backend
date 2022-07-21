@@ -25,7 +25,7 @@ def feed_view(request):
         allPosts=Posts.objects.filter(Q(caption__icontains=query) | Q(sub__iexact=query)| Q(faculty__iexact=query))
         print(allPosts)
     else: 
-        allPosts=Posts.objects.all()      
+        allPosts=Posts.objects.all().order_by('-created_at')      
     allReviews=Review.objects.all()
   
     
@@ -61,7 +61,7 @@ def review_view(request):
 
 
 def home_view(request):
-    if('q' in request.GET):
+    if('q' in request.GET ):
         query=request.GET.get('q')
         allPosts=Posts.objects.filter(caption__icontains=query)
         print(allPosts)    
@@ -74,12 +74,24 @@ def home_view(request):
 def about_view(request):
     return render(request,'users/about.html')
 
-def faculty_view(request):
-    return render(request,'users/faculty.html')
-
-def subject_view(request):
+def faculty_view(request,pk):
     allPosts=Posts.objects.all()
-    data={'posts':allPosts}
+    pk=pk.replace('-','/')
+    data={'posts':allPosts,'pk':pk}
+    for post in allPosts:
+        post.sem=post.sem.replace('/','-')
 
+    print('pk',pk)
+    return render(request,'users/faculty.html',data)
 
+def subject_view(request,pk):
+    allPosts=Posts.objects.all()
+    pk=pk.replace('-','/')
+    data={'posts':allPosts,'pk':pk}
+    print('pk',pk)
     return render(request,'users/subject.html',data)
+
+def delete_view(request,pk):
+    post=Posts.objects.get(id=pk)
+    post.delete()
+    return redirect('feed-page')

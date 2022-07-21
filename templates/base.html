@@ -13,19 +13,20 @@
 <body>
     <div class="navbar">
         <ul>
-            <li class="home"><a href="/posts"><i class="fa-solid fa-house"></i>Home</a></li>
+            <li class="home"><a href="{% url 'home-page' %}"><i class="fa-solid fa-house"></i>Home</a></li>
             <li><a href="#"><i class="fa-solid fa-graduation-cap"></i>Faculty</a>
                 <div class="subnavbaar">
                     <ul>
-                        <li><a href="{% url 'faculty-page' %}">BEI</a></li>
-                        <li><a href="{% url 'faculty-page' %}">BCT</a></li>
-                        <li><a href="{% url 'faculty-page' %}">BCE</a></li>
-                        <li><a href="{% url 'faculty-page' %}">CSIT</a></li>
+                        <li><a href="{% url 'feed-page' %}">All</a></li>
+                        <li><a href="{% url 'faculty-page' 'BEI' %}">BEI</a></li>
+                        <li><a href="{% url 'faculty-page' 'BCT' %}">BCT</a></li>
+                        <li><a href="{% url 'faculty-page' 'BCE' %}">BCE</a></li>
+                        <li><a href="{% url 'faculty-page' 'CSIT' %}">CSIT</a></li>
                     </ul>
                 </div>
             </li>
             
-            <li><a href="/posts/about"><i class="fa-solid fa-user"></i>About Us</a></li>
+            <li><a href="{% url 'about-page' %}"><i class="fa-solid fa-user"></i>About Us</a></li>
             {% if user.is_authenticated %}
             <li><a href="{% url 'logout-page' %}"><i class="fa-solid fa-user"></i>Logout</a></li>
             
@@ -41,4 +42,7 @@
     </div>
     {% block body %}{% endblock body %}
 </body>
+<script>
+    {% block script %}{% endblock script %}
+</script>
 </html>

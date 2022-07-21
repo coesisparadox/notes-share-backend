@@ -36,6 +36,10 @@ File<input type="file" name='file'/>
     <option value="I/II">I/II</option>
     <option value="II/I">II/I</option>
     <option value="II/II">II/II</option>
+    <option value="III/I">III/I</option>
+    <option value="III/II">III/II</option>
+    <option value="IV/I">IV/I</option>
+    <option value="IV/II">IV/II</option>
   </select>
   <input type="text" placeholder="Subject" name="sub"/>
   </div>
@@ -46,11 +50,17 @@ File<input type="file" name='file'/>
 {% endif %}
 {% for post in posts %}
 <div class="caption_body">
+  <div class="caption_side">
 <h2>Chapter Name-{{post.caption}}</h2>
 <h3>Published by-{{post.user}}</h3>
 <h3>Subject-{{post.sub}}</h3>
 <h3>Semester-{{post.sem}}</h3>
 <h3>Faculty-{{post.faculty}}</h3>
+<h3>Date-{{post.created_at}}</h3>
+  </div>
+{% if request.user == post.user %}
+            <a href='{% url 'delete-page' post.id %}'><button class="btn btn-danger">Delete</button></a>
+            {% endif %}
 </div>
 <div class="object">
 {% comment %} <object data=" {% static '/media/Practical-Report-Cover_ArHFlRq.pdf' %}" width="800px" height="800px" >asdsad</object> {% endcomment %}
