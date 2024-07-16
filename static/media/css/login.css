@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.container{
+    background: white;
+    width: 500px;
+    padding: 25px;
+    margin: 5px auto 0;
+    border-top: 5px solid #0084ff;
+    box-shadow: 0 0 8px 5px rgba(0,0,0,0.2);
+    margin-top: 50px;
+    
+    
+}
+
+.container h2{
+    font-size: 25px;
+    line-height: 24px;
+    padding: 30px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.input_name{
+    width: 90%;
+     position: relative;
+     margin: 20px auto;
+    border-radius: 6px ;
+}
+
+.input_name .name{
+margin-right: 16px;}
+
+.user{
+    padding: 8px 11px;
+}
+
+.fa-lock{
+    padding: 8px 11px;
+}
+
+.fa-envelope{
+    padding: 8px 11px;
+}
+.name{
+    width: 45%;
+    padding: 8px 0px 8px 40px;
+    margin-right: 15px;
+
+    }
+
+    .input_name span{
+        margin-left: 3px;
+    }
+
+.password{
+        width: 100%;
+        padding: 8px 0px 8px 40px;
+        font-size: 12px;
+    }
+
+.input_name i{
+        position: absolute;
+        font-size: 20px;
+        color: #0084ff;
+    }
+
+.password, .name{
+    border: 1px solid #cccccc;
+    outline: none;
+    border-radius: 7px;
+
+}
+
+
+.password:hover, .name:hover
+{
+    background-color: #fafafa;
+}
+
+.password:focus, .name:focus{
+    border: 1px solid #0084ff;
+}
+
+.faculty{
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    padding: 0px 7px;
+    cursor: pointer;
+ 
+}
+.semester{
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    padding: 0px 7px;
+    cursor: pointer;
+}
+
+.button{
+    background-color: rgb(0, 115, 255);
+    height: 35px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 23px;
+}
+
+.button:hover{
+    background-color: #0084ff;
+}
+
+@media (max-width:480px){
+    .container{
+        width: 100%;
+        padding: 2px solid red;
+        padding: 5px;
+    }
+    .input_name{
+        margin-bottom: -10px;
+    }
+    .name{
+        width: 100%;
+        padding: 8px 0 8px 40px;
+        margin-bottom: 10px;
+    }
+
+    .input_name span{
+padding: 0px;
+margin: 0px;
+    }
+}

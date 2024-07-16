@@ -1,0 +1,26 @@
+.sem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px;
+    height: 70vh;
+}
+.sem>h1,.sem>a>h1{
+    margin: 10px;
+    background-color: #0084ff;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+a{
+    text-decoration: none;
+}
+h1{
+    text-align: center;
+    /* width: 100%; */
+margin-top: 20px;
+}

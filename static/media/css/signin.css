@@ -1,0 +1,161 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    font-size: 14px;
+    background: #f2f2f2;
+}
+
+.container{
+    background: white;
+    width: 500px;
+    padding: 25px;
+    margin: 5px auto 0;
+    border-top: 5px solid rgb(0, 115, 255);
+    box-shadow: 0 0 8px 5px rgba(0,0,0,0.2);
+    /* margin-top: 20px; */
+    
+}
+
+.container h2{
+    font-size: 25px;
+    line-height: 24px;
+    padding: 30px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.input_name{
+    width: 90%;
+     position: relative;
+     margin: 20px auto;
+     /* border: 1px solid rgba(0,0,0,0.2); */
+    border-radius: 6px ;
+     /* font-size: 23px; */
+}
+
+.input_name .name{
+margin-right: 16px;}
+
+.user{
+    padding: 8px 11px;
+    /* 8px for top and bottom 11px for lef and right */
+}
+
+.fa-lock{
+    padding: 8px 11px;
+}
+
+.fa-envelope{
+    padding: 8px 11px;
+}
+.name{
+    width: 45%;
+    padding: 8px 0px 8px 40px;
+    margin-right: 15px;
+    /* border-radius: 4px solid blue; */
+
+     /* font-si  ze: 23px; */
+    }
+
+    .input_name span{
+        margin-left: 3px;
+    }
+
+.password{
+        /* width: 100%; */
+        width: 100%;
+        padding: 8px 0px 8px 40px;
+        font-size: 12px;
+    }
+
+.input_name i{
+        position: absolute;
+        font-size: 15px;
+        color: rgb(0, 115, 255);
+        /* border-right: 1px solid #cccccc; */
+    }
+
+.password, .name{
+    border: 1px solid #cccccc;
+    outline: none;
+    border-radius: 7px;
+    /* border-radius: 4px solid blue; */
+
+    /* -webkit-transition: all 0.20s ease-in-out;
+    -ms-transition: all 0.20s ease-in-out; */
+}
+
+
+.password:hover, .name:hover
+{
+    background-color: #fafafa;
+}
+
+.password:focus, .name:focus{
+    border: 1px solid rgb(0, 115, 255);
+}
+
+.faculty{
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    padding: 0px 7px;
+    cursor: pointer;
+    /* -webkit-appearance: none; */
+    /* -ms-appearance: none; */
+    /* appearance: none; */
+    /* transition: all 0.2s ease; */
+}
+.semester{
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    padding: 0px 7px;
+    cursor: pointer;
+    /* -webkit-appearance: none; */
+    /* -ms-appearance: none; */
+    /* appearance: none; */
+    /* transition: all 0.2s ease; */
+}
+
+.button{
+    background-color: rgb(0, 115, 255);
+    height: 35px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 23px;
+}
+
+.button:hover{
+    /* background-color: green; */
+    background-color: #0084ff;
+}
+
+@media (max-width:480px){
+    .container{
+        width: 100%;
+        padding: 2px solid red;
+        padding: 5px;
+    }
+    .input_name{
+        margin-bottom: -10px;
+    }
+    .name{
+        width: 100%;
+        padding: 8px 0 8px 40px;
+        margin-bottom: 10px;
+    }
+
+    .input_name span{
+padding: 0px;
+margin: 0px;
+    }
+}
